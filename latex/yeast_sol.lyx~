@@ -1,0 +1,1328 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+Yeast Signaling
+\end_layout
+
+\begin_layout Standard
+We begin with the equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\frac{\partial C(x,z)}{\partial t} & =D\nabla^{2}C(x,z)+r\Theta(-x)\delta(z)-\Omega\delta(z)C(x,z)
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Look for steady state solutions:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+D\nabla^{2}C(x,z)+r\Theta(-x)\delta(z)-\Omega\delta(z)C(x,z) & =0
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define new coefficients:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\partial_{xx}C(x,z)+\partial_{zz}C(x,z)+\tilde{r}\Theta(-x)\delta(z)-\tilde{\Omega}\delta(z)C(x,z) & =0
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And drop the tildes from here forward.
+\end_layout
+
+\begin_layout Standard
+What happens if we integrate over an 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ region around 
+\begin_inset Formula $z=0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\partial_{z}C(x,z)|_{z=+\epsilon}-\partial_{z}C(x,z)|_{z=-\epsilon} & =-r\Theta(-x)+\Omega C(x,z=0)
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is the virtual flux of 
+\begin_inset Formula $\text{\ensuremath{\alpha}}$
+\end_inset
+
+ factors through the 
+\begin_inset Formula $z$
+\end_inset
+
+-plane, and we can turn it into a Robin BC:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\partial_{z}C(x,z)|_{z=0} & =-r\Theta(-x)+\Omega C(x,z=0)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And just solve the Poisson equation on the positive half volume!
+\end_layout
+
+\begin_layout Standard
+Assume structure of 
+\begin_inset Formula $C(x,z)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+C(x,z) & =X(x)Z(z)+\frac{r}{2\Omega}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We assume this structure due to the fact that one can deduce from the equation
+ that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C(-x,z)+C(x,z)=\frac{r}{\Omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Rightarrow C(0,z)=\frac{r}{2\Omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And also:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C(x,z)=X(x)Z(z)\Rightarrow C(0,z)=X(0)Z(z)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $X(0)$
+\end_inset
+
+ is a constant, and there is no way to satisfy the previous condition for
+ 
+\begin_inset Formula $C(0,z)$
+\end_inset
+
+ besides constant 
+\begin_inset Formula $Z(z)$
+\end_inset
+
+, which cannot be a solution.
+\end_layout
+
+\begin_layout Standard
+So we have BC:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\partial_{z}C(x,z)|_{z=L_{z}}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\partial_{z}C(x,z)|_{z=0}=-r\Theta(-x)+\Omega C(x,z=0)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C(x,z)|_{x=0}=\frac{r}{2\Omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\partial_{x}C(x,z)|_{x=-L_{x}}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And we solve for the 
+\begin_inset Formula $x<0$
+\end_inset
+
+ region, which dictates the 
+\begin_inset Formula $x>0$
+\end_inset
+
+ region.
+\end_layout
+
+\begin_layout Standard
+This is the simplest structure that has the potential to adhere to the constrain
+ts, where 
+\begin_inset Formula $C(x,z)$
+\end_inset
+
+ is still seperable in the Poisson equation.
+ 
+\end_layout
+
+\begin_layout Standard
+Before the analytical solution, we perform a coarse-grained simulation of
+ the above to see how results should look like (with finite 
+\begin_inset Formula $L_{x},L_{z}$
+\end_inset
+
+) in 
+\begin_inset Formula $2\text{D}$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "fig: Figure 1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, and plot 
+\begin_inset Formula $C(x,z=0)$
+\end_inset
+
+ for different values of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ (fig.
+ 2).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/yotamlifschytz/Desktop/Masters Misc./python/Random/Yeast/figs/omega_0.6.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Heatmap of the 
+\begin_inset Formula $C(x,z)$
+\end_inset
+
+ steady state (simulation taken to 
+\begin_inset Formula $10^{6}$
+\end_inset
+
+ steps); Arrows represent the flow field at every point; Parameter values
+ are 
+\begin_inset Formula $r_{0}=0.1$
+\end_inset
+
+, 
+\begin_inset Formula $L_{x}=20$
+\end_inset
+
+, 
+\begin_inset Formula $L_{z}=30$
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Figure 1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/yotamlifschytz/Desktop/Masters Misc./python/Random/Yeast/figs/z0_line_plots_combined.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation results for 
+\begin_inset Formula $C(x,z=0)$
+\end_inset
+
+ for different 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ values
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: 2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now solve:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\nabla^{2}C(x,z) & =0
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\frac{1}{X(x)}\partial_{xx}X(x) & =-k^{2}=-\frac{1}{Z}\partial_{zz}Z(z)
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+X_{n}(x) & =A_{n}e^{+ik_{n}x}+B_{n}e^{-ik_{n}x}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+Z_{n}(z) & =C_{n}e^{+k_{n}z}+D_{n}e^{-k_{n}z}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+BC 3:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+C(x,z)|_{x=0} & \propto A_{n}+B_{n}+\frac{r}{2\Omega}=\frac{r}{2\Omega}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Rightarrow B_{n}=-A_{n}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+ & \Rightarrow X_{n}(x)=A_{n}sin(k_{n}x)
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+BC 4:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\partial_{x}C(x,z)|_{x=-L_{x}} & \propto cos(k_{n}L_{x})=0
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+k_{n} & =\frac{\pi}{2L_{x}}(2n+1)\Rightarrow k_{n_{odd}}=\frac{\pi}{2L_{x}}n_{odd}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where we have only odd wavenumbers.
+\end_layout
+
+\begin_layout Standard
+BC 1:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\partial_{z}C(x,z)|_{z=L_{z}} & \propto C_{n}e^{+k_{n}L_{z}}-D_{n}e^{-k_{n}L_{z}}=0
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+D_{n} & =C_{n}e^{+2k_{n}L_{x}}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+ & \Rightarrow Z_{n}(z)\propto(e^{+k_{n}z}+e^{+2k_{n}L_{x}}e^{-k_{n}z})\propto cosh(k_{n}(z-L_{z}))
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we now have for 
+\begin_inset Formula $x<0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C(x,z)=\sum_{n_{odd}}A_{n}sin(k_{n}x)cosh(k_{n}(z-L_{z}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And our final BC is (on 
+\begin_inset Formula $x<0$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\partial_{z}C(x,z)|_{z=0} & =-r+\Omega C(x,z=0)
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\sum-k_{n}A_{n}cos(k_{n}x)sinh(k_{n}L_{z}) & =+\tilde{\Omega}\sum A_{n}sin(k_{n}x)cosh(k_{n}L_{z})-\frac{r}{2}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\sum_{n_{odd}}A_{n}sin(k_{n}x)[\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z})] & =\frac{r}{2}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+A_{n}^{'} & :=A_{n}\frac{\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z})}{r/2}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\sum_{n_{odd}}A_{n}^{'}sin(k_{n}x) & =1
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Multiply by 
+\begin_inset Formula $sin(k_{m}x)$
+\end_inset
+
+ and integrate on 
+\begin_inset Formula $x<0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+A_{m}^{'}\frac{L_{x}}{2} & =\int_{-L_{x}}^{0}sin(k_{m}x)dx=-\frac{1}{k_{m}}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where we get that for 
+\begin_inset Formula $m_{odd}\neq n_{odd}$
+\end_inset
+
+ these sines are orthogonal on 
+\begin_inset Formula $[-L_{x},0].$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+-\frac{2}{k_{n}L_{x}}=A_{n}^{'}=A_{n}\frac{\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z})}{r/2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Rightarrow A_{n}=-\frac{r}{L_{x}}\frac{1}{k_{n}(\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z}))}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C_{<}(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z}))}sin(k_{n}x)cosh(k_{n}(z-L_{z}))
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And this actually agrees with the symmetry we found, so this is the solution
+ on all 
+\begin_inset Formula $x$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z}))}sin(k_{n}x)cosh(k_{n}(z-L_{z}))
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using some hyperbolic identities:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega+k_{n}tanh(k_{n}L_{z}))}sin(k_{n}x)[cosh(k_{n}z)-sinh(k_{n}z)tanh(k_{n}L_{z})]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Grapic representation of this analytical result can be found in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "fig: 3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/yotamlifschytz/Desktop/Masters Misc./python/Random/Yeast/figs_analytic/omega_0.6.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Plotted is the analytical result derived for 
+\begin_inset Formula $C(x,z)$
+\end_inset
+
+ for the case of finite 
+\begin_inset Formula $L_{x},L_{z}$
+\end_inset
+
+ ; Arrows represent the flow field at every point; Parameter values are
+ 
+\begin_inset Formula $L_{x}=20,L_{z}=40,\Omega=0.6,r=0.1,N_{max}=100$
+\end_inset
+
+ where the last term represents the cutoff term for the series solution.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: 3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, we are most interested at what happens on 
+\begin_inset Formula $z=0$
+\end_inset
+
+ plane, so:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+C(x,0) & =\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z}))}sin(k_{n}x)cosh(k_{n}L_{z})
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega+k_{n}tanh(k_{n}L_{z}))}sin(k_{n}x)
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And at 
+\begin_inset Formula $L_{z}\gg1$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\approx\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega+k_{n})}sin(k_{n}x)
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which is exactly the same solution as with absorbing BC at 
+\begin_inset Formula $L_{z}=\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We can further simplify this solution:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega+k_{n})}sin(k_{n}x)=
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=\frac{r}{2\Omega}-\frac{r}{\Omega L_{x}}\sum_{n_{odd}}(\frac{1}{k_{n}}-\frac{1}{\Omega+k_{n}})sin(k_{n}x)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=\frac{r}{2\Omega}-\frac{r}{2\Omega}\sum_{n_{odd}}4\frac{sin(k_{n}x)}{\pi n}+\frac{r}{\Omega L_{x}}\sum_{n_{odd}}\frac{sin(k_{n}x)}{k_{n}+\Omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We know 
+\begin_inset Formula $\sum_{n_{odd}}4\frac{sin(k_{n}x)}{\pi n}$
+\end_inset
+
+ is the fourier transform of a sin square wave, so:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=\frac{r}{\Omega}(\Theta(-x)+\frac{1}{L_{x}}\sum_{n_{odd}}\frac{sin(k_{n}x)}{k_{n}+\Omega})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We plot this solution in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "fig:Analytical-results-vary-Omega"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/yotamlifschytz/Desktop/Masters Misc./python/Random/Yeast/figs_analytic/vary_Omega_plots_Lx_20.png
+	lyxscale 30
+	scale 30
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Analytical results for 
+\begin_inset Formula $C(x,0)$
+\end_inset
+
+ for varying values of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+; Parameter values are 
+\begin_inset Formula $L_{x}=20,r=0.1,N_{max}=10^{5}$
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Analytical-results-vary-Omega"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/yotamlifschytz/Desktop/Masters Misc./python/Random/Yeast/figs_analytic/vary_Lx_plots_Omega_0.2.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Analytical results for 
+\begin_inset Formula $C(x,0)$
+\end_inset
+
+ for varying values of 
+\begin_inset Formula $L_{x}$
+\end_inset
+
+; Parameter values are 
+\begin_inset Formula $\Omega=0.2,r=0.1,N_{max}=10^{5}$
+\end_inset
+
+; Can be seen length scale 
+\begin_inset Formula $1/\Omega$
+\end_inset
+
+ controls decay scale where all results are identicle 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Analytical-results-vary-Lx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we can return to original notation of 
+\begin_inset Formula $r,\Omega:$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=\frac{r}{\Omega}(\Theta(-x)+\frac{1}{L_{x}}\sum_{n_{odd}}\frac{sin(k_{n}x)}{k_{n}+\frac{\Omega}{D}})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Take to the continuum limit:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y=k_{n}=\frac{\pi n}{2L_{x}};dy=\frac{\pi}{2L_{x}}dn;dn=2
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{L_{x}}\sum_{n_{odd}}\frac{sin(k_{n}x)}{k_{n}+\frac{\Omega}{D}}=\frac{1}{\pi}\intop_{0}^{\infty}\frac{sin(yx)}{y+\frac{\Omega}{D}}dy=\frac{1}{\pi}\intop_{\frac{\Omega}{D}}^{\infty}\frac{sin(yx-\frac{\Omega}{D}x)}{y}dy
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{1}{\pi}\intop_{\frac{\Omega}{D}}^{\infty}\frac{sin(yx)cos(\frac{\Omega}{D}x)-cos(yx)sin(\frac{\Omega}{D}x)}{y}dy=\frac{cos(\frac{\Omega}{D}x)}{\pi}\intop_{\frac{\Omega}{D}}^{\infty}\frac{sin(yx)}{y}dy-\frac{sin(\frac{\Omega}{D}x)}{\pi}\intop_{\frac{\Omega}{D}}^{\infty}\frac{cos(yx)}{y}dy
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=\frac{cos(\frac{\Omega}{D}x)}{\pi}sign(x)[\frac{\pi}{2}-Si(\frac{\Omega}{D}x)]+sign(x)\frac{sin(\frac{\Omega}{D}x)}{\pi}Ci(x\frac{\Omega}{D})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With 
+\begin_inset Formula $Ci(\omega)=-\int_{\omega}^{\infty}\frac{cos(y)}{y}dy$
+\end_inset
+
+ and 
+\begin_inset Formula $Si(\omega)=\int_{0}^{\omega}\frac{sin(y)}{y}dy$
+\end_inset
+
+ being the cosine integral and sine integral, respectively.
+\end_layout
+
+\begin_layout Standard
+Therefore we have:
+\begin_inset Formula 
+\begin{align}
+C(x,z & =0)=\frac{r}{\Omega}\times\left(\Theta(-x)+\frac{cos(\frac{\Omega}{D}x)}{\pi}sign(x)[\frac{\pi}{2}-Si(\frac{\Omega}{D}x)]+sign(x)\frac{sin(\frac{\Omega}{D}x)}{\pi}Ci(x\frac{\Omega}{D})\right)
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Observe we have only 
+\begin_inset Formula $1$
+\end_inset
+
+length scale of 
+\begin_inset Formula $\frac{D}{\Omega}:=L_{D}$
+\end_inset
+
+; Let us explore the 
+\begin_inset Formula $2$
+\end_inset
+
+ extreme regimes of 
+\begin_inset Formula $\frac{x}{L_{D}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $x\gg L_{D}$
+\end_inset
+
+ we have the asymptotic expansions:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Si(\frac{x}{L_{D}})\approx\frac{\pi}{2}-\frac{cos(\frac{x}{L_{D}})}{\frac{x}{L_{D}}};Ci(x)\approx\frac{sin(\frac{x}{L_{D}})}{\frac{x}{L_{D}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Plugging this in to get the behaviour far from the origin (assume 
+\begin_inset Formula $x>0$
+\end_inset
+
+ for simplicity):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C(x,z=0)\approx\frac{r}{\Omega}\times\left(\frac{L_{D}}{\pi x}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And for 
+\begin_inset Formula $x<0$
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C(x,z=0)\approx\frac{r}{\Omega}\times\left(1+\frac{L_{D}}{\pi x}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And this is the approximate behaviour far from the origin, which is different
+ then the exponential asymptotic behaviour of the 
+\begin_inset Formula $1D$
+\end_inset
+
+ version.
+\end_layout
+
+\end_body
+\end_document
