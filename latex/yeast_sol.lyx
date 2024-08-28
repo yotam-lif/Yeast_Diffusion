@@ -1,16 +1,16 @@
-#LyX 2.4 created this file. For more info see https://www.lyx.org/
-\lyxformat 620
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
 \use_default_options true
-\maintain_unincluded_children no
+\maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto-legacy
-\fontencoding auto
+\inputencoding auto
+\fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -18,9 +18,7 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_roman_osf false
-\font_sans_osf false
-\font_typewriter_osf false
+\font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -63,9 +61,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
-\use_formatted_ref 0
 \use_minted 0
-\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -81,16 +77,11 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tablestyle default
 \tracking_changes false
 \output_changes false
-\change_bars false
-\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\docbook_table_output 0
-\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -99,10 +90,6 @@
 
 \series bold
 Yeast Signaling
-\end_layout
-
-\begin_layout Part
-No BAR1
 \end_layout
 
 \begin_layout Standard
@@ -186,8 +173,7 @@ This is the virtual flux of
 \begin_inset Formula $z$
 \end_inset
 
--plane,
- and we can turn it into a Robin BC:
+-plane, and we can turn it into a Robin BC:
 \end_layout
 
 \begin_layout Standard
@@ -202,7 +188,8 @@ This is the virtual flux of
 \end_layout
 
 \begin_layout Standard
-And just solve the Poisson equation on the positive half volume!
+And just solve the Laplace equation on the positive half volume.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -225,7 +212,8 @@ C(x,z) & =X(x)Z(z)+\frac{r}{2\Omega}
 \end_layout
 
 \begin_layout Standard
-We assume this structure due to the fact that one can deduce from the equation that:
+We assume this structure due to the fact that one can deduce the following
+ symmetry from the equation / BC:
 \end_layout
 
 \begin_layout Standard
@@ -270,8 +258,8 @@ Where
 \begin_inset Formula $X(0)$
 \end_inset
 
- is a constant,
- and there is no way to satisfy the previous condition for 
+ is a constant, and there is no way to satisfy the previous condition for
+ 
 \begin_inset Formula $C(0,z)$
 \end_inset
 
@@ -279,12 +267,90 @@ Where
 \begin_inset Formula $Z(z)$
 \end_inset
 
-,
- which cannot be a solution.
+, which cannot be a solution.
 \end_layout
 
 \begin_layout Standard
-So we have BC:
+The symmetry can be seen as follows - if 
+\begin_inset Formula $C(x,z)$
+\end_inset
+
+ is a solution, for 
+\begin_inset Formula $x>0$
+\end_inset
+
+ we have:
+\begin_inset Formula 
+\[
+\partial_{z}C(x,z)|_{z=0}=\Omega C(x,z=0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\partial_{z}C(-x,z)|_{z=0}=-r+\Omega C(-x,z=0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now take the function 
+\begin_inset Formula $\frac{r}{\Omega}-C(x,z)$
+\end_inset
+
+, it satisfies the Robin BC for 
+\begin_inset Formula $x<0$
+\end_inset
+
+ as well:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-\partial_{z}C(x,z)|_{z=0}=\Omega\left(\frac{r}{\Omega}-C(x,z)\right)=r-\Omega C(x,z=0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It also satisfies the rest of the reflecting BC and is a solution of the
+ Laplace equation as well, thus 
+\begin_inset Formula $\frac{r}{\Omega}-C(x,z)$
+\end_inset
+
+ is also a solution on 
+\begin_inset Formula $x<0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+From uniqueness we can deduce 
+\begin_inset Formula $\frac{r}{\Omega}-C(x,z)=C(-x,z)$
+\end_inset
+
+ and we get our symmetry.
+\end_layout
+
+\begin_layout Standard
+So, we have BC:
 \end_layout
 
 \begin_layout Standard
@@ -336,8 +402,7 @@ And we solve for the
 \begin_inset Formula $x<0$
 \end_inset
 
- region,
- which dictates the 
+ region, which dictates the 
 \begin_inset Formula $x>0$
 \end_inset
 
@@ -345,18 +410,18 @@ And we solve for the
 \end_layout
 
 \begin_layout Standard
-This is the simplest structure that has the potential to adhere to the constraints,
- where 
+This is the simplest structure that has the potential to adhere to the constrain
+ts, where 
 \begin_inset Formula $C(x,z)$
 \end_inset
 
- is still separable in the Poisson equation.
+ is still seperable in the Poisson equation.
  
 \end_layout
 
 \begin_layout Standard
-Before the analytical solution,
- we perform a coarse-grained simulation of the above to see how results should look like (with finite 
+Before the analytical solution, we perform a coarse-grained simulation of
+ the above to see how results should look like (with finite 
 \begin_inset Formula $L_{x},L_{z}$
 \end_inset
 
@@ -371,12 +436,10 @@ reference "fig: Figure 1"
 plural "false"
 caps "false"
 noprefix "false"
-nolink "false"
 
 \end_inset
 
-,
- and plot 
+, and plot 
 \begin_inset Formula $C(x,z=0)$
 \end_inset
 
@@ -390,8 +453,6 @@ nolink "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement document
-alignment document
 wide false
 sideways false
 status open
@@ -399,7 +460,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /Users/yotamlif/Desktop/Yeast_Diffusion/figs/omega_0.6.png
+	filename /Users/yotamlifschytz/Desktop/Yeast_Diffusion/figs/omega_0.6.png
 	lyxscale 50
 	scale 50
 
@@ -420,19 +481,16 @@ Heatmap of the
 \begin_inset Formula $10^{6}$
 \end_inset
 
- steps);
- Arrows represent the flow field at every point;
- Parameter values are 
+ steps); Arrows represent the flow field at every point; Parameter values
+ are 
 \begin_inset Formula $r_{0}=0.1$
 \end_inset
 
-,
- 
+, 
 \begin_inset Formula $L_{x}=20$
 \end_inset
 
-,
- 
+, 
 \begin_inset Formula $L_{z}=30$
 \end_inset
 
@@ -458,8 +516,6 @@ name "fig: Figure 1"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement document
-alignment document
 wide false
 sideways false
 status open
@@ -467,7 +523,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /Users/yotamlif/Desktop/Yeast_Diffusion/figs/z0_line_plots_combined.png
+	filename /Users/yotamlifschytz/Desktop/Yeast_Diffusion/figs/z0_line_plots_combined.png
 	lyxscale 50
 	scale 50
 
@@ -620,7 +676,7 @@ k_{n} & =\frac{\pi}{2L_{x}}(2n+1)\Rightarrow k_{n_{odd}}=\frac{\pi}{2L_{x}}n_{od
 \end_layout
 
 \begin_layout Standard
-Where we have only odd wave-numbers.
+Where we have only odd wavenumbers.
 \end_layout
 
 \begin_layout Standard
@@ -811,13 +867,12 @@ C_{<}(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega 
 \end_layout
 
 \begin_layout Standard
-And this actually agrees with the symmetry we found,
- so this is the solution on all 
+And this actually agrees with the symmetry we found, so this is the solution
+ on all 
 \begin_inset Formula $x$
 \end_inset
 
-:
- 
+: 
 \end_layout
 
 \begin_layout Standard
@@ -854,7 +909,6 @@ reference "fig: 3"
 plural "false"
 caps "false"
 noprefix "false"
-nolink "false"
 
 \end_inset
 
@@ -863,8 +917,6 @@ nolink "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement document
-alignment document
 wide false
 sideways false
 status open
@@ -872,7 +924,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /Users/yotamlif/Desktop/Yeast_Diffusion/figs_analytic/omega_0.6.png
+	filename /Users/yotamlifschytz/Desktop/Yeast_Diffusion/figs_analytic/omega_0.6.png
 	lyxscale 50
 	scale 50
 
@@ -893,9 +945,8 @@ Plotted is the analytical result derived for
 \begin_inset Formula $L_{x},L_{z}$
 \end_inset
 
- ;
- Arrows represent the flow field at every point;
- Parameter values are 
+ ; Arrows represent the flow field at every point; Parameter values are
+ 
 \begin_inset Formula $L_{x}=20,L_{z}=40,\Omega=0.6,r=0.1,N_{max}=100$
 \end_inset
 
@@ -925,13 +976,11 @@ name "fig: 3"
 \end_layout
 
 \begin_layout Standard
-Now,
- we are most interested at what happens on 
+Now, we are most interested at what happens on 
 \begin_inset Formula $z=0$
 \end_inset
 
- plane,
- so:
+ plane, so:
 \end_layout
 
 \begin_layout Standard
@@ -1025,8 +1074,7 @@ We know
 \begin_inset Formula $\sum_{n_{odd}}4\frac{sin(k_{n}x)}{\pi n}$
 \end_inset
 
- is the Fourier transform of a sin square wave,
- so:
+ is the fourier transform of a sin square wave, so:
 \end_layout
 
 \begin_layout Standard
@@ -1048,7 +1096,6 @@ reference "fig:Analytical-results-vary-Omega"
 plural "false"
 caps "false"
 noprefix "false"
-nolink "false"
 
 \end_inset
 
@@ -1057,8 +1104,6 @@ nolink "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement document
-alignment document
 wide false
 sideways false
 status open
@@ -1066,7 +1111,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /Users/yotamlif/Desktop/Yeast_Diffusion/figs_analytic/vary_Omega_plots_Lx_20.png
+	filename /Users/yotamlifschytz/Desktop/Yeast_Diffusion/figs_analytic/vary_Omega_plots_Lx_20.png
 	lyxscale 30
 	scale 30
 	rotateOrigin center
@@ -1088,8 +1133,7 @@ Analytical results for
 \begin_inset Formula $\Omega$
 \end_inset
 
-;
- Parameter values are 
+; Parameter values are 
 \begin_inset Formula $L_{x}=20,r=0.1,N_{max}=10^{5}$
 \end_inset
 
@@ -1119,8 +1163,6 @@ name "fig:Analytical-results-vary-Omega"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement document
-alignment document
 wide false
 sideways false
 status open
@@ -1132,7 +1174,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /Users/yotamlif/Desktop/Yeast_Diffusion/figs_analytic/vary_Lx_plots_Omega_0.2.png
+	filename /Users/yotamlifschytz/Desktop/Yeast_Diffusion/figs_analytic/vary_Lx_plots_Omega_0.2.png
 	lyxscale 30
 	scale 30
 
@@ -1153,13 +1195,11 @@ Analytical results for
 \begin_inset Formula $L_{x}$
 \end_inset
 
-;
- Parameter values are 
+; Parameter values are 
 \begin_inset Formula $\Omega=0.2,r=0.1,N_{max}=10^{5}$
 \end_inset
 
-;
- Can be seen length scale 
+; Can be seen length scale 
 \begin_inset Formula $1/\Omega$
 \end_inset
 
@@ -1263,8 +1303,7 @@ With
 \begin_inset Formula $Si(\omega)=\int_{0}^{\omega}\frac{sin(y)}{y}dy$
 \end_inset
 
- being the cosine integral and sine integral,
- respectively.
+ being the cosine integral and sine integral, respectively.
 \end_layout
 
 \begin_layout Standard
@@ -1288,8 +1327,7 @@ Observe we have only
 \begin_inset Formula $D/\Omega:=L_{D}$
 \end_inset
 
-;
- Let us explore the 
+; Let us explore the 
 \begin_inset Formula $2$
 \end_inset
 
@@ -1358,12 +1396,11 @@ C(x,z=0)\approx\frac{r}{\Omega}\times\left(1+\frac{L_{D}}{\pi x}\right)
 \end_layout
 
 \begin_layout Standard
-And this is the approximate behavior for 
+And this is the approximate behaviour for 
 \begin_inset Formula $x\gg L_{D}$
 \end_inset
 
-,
- which is different then the exponential asymptotic behaviour of the 
+, which is different then the exponential asymptotic behaviour of the 
 \begin_inset Formula $1D$
 \end_inset
 
@@ -1371,14 +1408,13 @@ And this is the approximate behavior for
 \end_layout
 
 \begin_layout Standard
-We plot this asymptotic behavior in 
+We plot this asymptotic behaviour in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig: linear-asymptotic"
 plural "false"
 caps "false"
 noprefix "false"
-nolink "false"
 
 \end_inset
 
@@ -1387,8 +1423,6 @@ nolink "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement document
-alignment document
 wide false
 sideways false
 status open
@@ -1396,7 +1430,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /Users/yotamlif/Desktop/Yeast_Diffusion/figs_analytic/vary_omega_asymptotic.png
+	filename /Users/yotamlifschytz/Desktop/Yeast_Diffusion/figs_analytic/vary_omega_asymptotic.png
 	lyxscale 40
 	scale 40
 
@@ -1442,8 +1476,7 @@ name "fig: linear-asymptotic"
 \end_inset
 
 .
- Thus,
- plotting 
+ Thus, plotting 
 \begin_inset Formula $log(-C(x,z=0)/\frac{r}{\Omega})+log(\pi\Omega)$
 \end_inset
 
@@ -1463,8 +1496,7 @@ name "fig: linear-asymptotic"
 \begin_inset Formula $45$
 \end_inset
 
- degree line,
- as can be seen.
+ degree line, as can be seen.
 \end_layout
 
 \end_inset
@@ -1502,14 +1534,13 @@ Where
 \begin_inset Formula $x>0$
 \end_inset
 
- for brevity,
- we get:
+ for brevity, we get:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C(x,0)\approx\frac{r}{\Omega\pi}\times\left(\frac{\pi}{2}-\frac{|x|}{L_{D}}+\frac{x}{L_{D}}\left(ln\left(\frac{|x|}{L_{D}}\right)+\gamma\right)\right)
+C(x,0)\approx\frac{r}{\Omega\pi}\times\left(sign(x)[\frac{\pi}{2}-\frac{|x|}{L_{D}}]+\frac{x}{L_{D}}\left(ln\left(\frac{|x|}{L_{D}}\right)+\gamma\right)\right)
 \end{equation}
 
 \end_inset
@@ -1518,8 +1549,7 @@ C(x,0)\approx\frac{r}{\Omega\pi}\times\left(\frac{\pi}{2}-\frac{|x|}{L_{D}}+\fra
 \end_layout
 
 \begin_layout Standard
-Therefor,
- for 
+Therefor, for 
 \begin_inset Formula $0<x\ll L_{D}$
 \end_inset
 
@@ -1535,14 +1565,6 @@ C(x,0)\approx\frac{r}{\Omega\pi}\times\left(\frac{\pi}{2}+\frac{x}{L_{D}}\left(l
 \end_inset
 
 
-\end_layout
-
-\begin_layout Part
-With BAR1
-\end_layout
-
-\begin_layout Standard
-In this situation we have BAR1 being 
 \end_layout
 
 \end_body
