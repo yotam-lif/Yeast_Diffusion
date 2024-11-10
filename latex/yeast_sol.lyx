@@ -697,7 +697,7 @@ BC 1:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-D_{n} & =C_{n}e^{+2k_{n}L_{x}}
+D_{n} & =C_{n}e^{+2k_{n}L_{z}}
 \end{align}
 
 \end_inset
@@ -708,7 +708,7 @@ D_{n} & =C_{n}e^{+2k_{n}L_{x}}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
- & \Rightarrow Z_{n}(z)\propto(e^{+k_{n}z}+e^{+2k_{n}L_{x}}e^{-k_{n}z})\propto cosh(k_{n}(z-L_{z}))
+ & \Rightarrow Z_{n}(z)\propto(e^{+k_{n}z}+e^{+2k_{n}L_{z}}e^{-k_{n}z})\propto cosh(k_{n}(z-L_{z}))
 \end{align}
 
 \end_inset
@@ -858,7 +858,7 @@ Where we get that for
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C_{<}(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z}))}sin(k_{n}x)cosh(k_{n}(z-L_{z}))
+C_{<}(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{sin(k_{n}x)cosh(k_{n}(z-L_{z}))}{k_{n}(\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z}))}
 \end{equation}
 
 \end_inset
@@ -878,22 +878,7 @@ And this actually agrees with the symmetry we found, so this is the solution
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z}))}sin(k_{n}x)cosh(k_{n}(z-L_{z}))
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Using some hyperbolic identities:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-C(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega+k_{n}tanh(k_{n}L_{z}))}sin(k_{n}x)[cosh(k_{n}z)-sinh(k_{n}z)tanh(k_{n}L_{z})]
+C(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{sin(k_{n}x)cosh(k_{n}(z-L_{z}))}{k_{n}(\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z}))}
 \end{equation}
 
 \end_inset
@@ -1561,6 +1546,149 @@ Therefor, for
 \begin{equation}
 C(x,0)\approx\frac{r}{\Omega\pi}\times\left(\frac{\pi}{2}+\frac{x}{L_{D}}\left(ln\left(\frac{x}{L_{D}}\right)+\gamma-1\right)\right)
 \end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Adding Denaturation
+\end_layout
+
+\begin_layout Standard
+Adding to the complexity of the model, we would like to see how the solution
+ changes with spatial uniform degradation.
+ In a 
+\begin_inset Formula $1D$
+\end_inset
+
+ model this can be lumped together with cell uptake into the same term.
+ In 
+\begin_inset Formula $2D$
+\end_inset
+
+ however this is not the case, and the equation to sove changes from the
+ Laplace equation to the Helmholtz equation, with the same BCs:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\nabla^{2}-\omega^{2}\right)C(x,z)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Solve with seperation of variables:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{X}\partial_{xx}X(x)=-k^{2}=-\frac{1}{Z}\partial_{zz}Z(z)+\omega^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{k}(x)=A_{k}cos(kx)+B_{k}sin(kx)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Z_{k}(z)=C_{k}e^{\lambda z}+D_{k}e^{-\lambda z}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lambda^{2}:=k^{2}+\omega^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{k}(x,z)=\left(A_{k}e^{+ikx}+B_{k}e^{-ikx}\right)\left(C_{k}e^{\lambda z}+D_{k}e^{-\lambda z}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We get the same results given the BC as in the first equations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+z\rightarrow\infty\Rightarrow C_{k}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\partial_{x}C(x,z)|_{x=+L_{x}}\propto A_{k}e^{+ikL_{x}}-B_{k}e^{-ikL_{x}}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Rightarrow B_{k}=A_{k}e^{2ikL_{x}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{k}(x,z)=A_{k}cos(k(x-L_{x}))e^{-\lambda z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\partial_{x}C(x,z)|_{x=-L_{x}}\propto sin(2kL_{x})=0\Rightarrow k_{n}=\frac{\pi n}{2L_{x}}
+\]
 
 \end_inset
 
