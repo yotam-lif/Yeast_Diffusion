@@ -10,7 +10,7 @@ itrs = 70 * (10 ** 3)
 L_x = 40
 
 # Create directory for saving figures
-figs_dir = 'figs'
+figs_dir = '../figs'
 os.makedirs(figs_dir, exist_ok=True)
 
 

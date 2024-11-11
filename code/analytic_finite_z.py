@@ -12,7 +12,7 @@ x_size = 10
 z_size = 10
 
 # Create directory for saving figures
-figs_dir = 'figs_analytic'
+figs_dir = '../figs_analytic'
 os.makedirs(figs_dir, exist_ok=True)
 fig_path = os.path.join(figs_dir, f'reflecting_bc.png')
 

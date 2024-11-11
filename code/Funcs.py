@@ -55,7 +55,7 @@ def plot_abs_grid(C_values, r, omega, L_x, x_size, z_size, fig_path):
     plt.savefig(fig_path, dpi=300)
     plt.close()
 
-def plot_ref_grid(C_values, r, omega, L_x, L_z, x_size, z_size, fig_path):
+def plot_ref_grid(C_values, r, omega, L_x, L_z, x_size, z_size, fig_path, x_exclude=0.5, z_exclude=0.25, arrow_scale=0.125):
     """Plot and save a heatmap of the current grid with vector field."""
     dz, dx = np.gradient(C_values)
     dz, dx = -dz, -dx  # Invert the gradient to show flow direction
@@ -78,13 +78,18 @@ def plot_ref_grid(C_values, r, omega, L_x, L_z, x_size, z_size, fig_path):
     dz_reduced = dz[np.ix_(z_indices, x_indices)]
     dx_reduced = dx[np.ix_(z_indices, x_indices)]
 
+    # Mask out the region to exclude arrows
+    mask = (X_reduced >= -x_exclude) & (X_reduced <= x_exclude) & (Z_reduced >= 0) & (Z_reduced <= z_exclude)
+    dx_reduced[mask] = 0
+    dz_reduced[mask] = 0
+
     # Reduce the density of vectors for better visibility
-    step = max(1, len(x_reduced) // 18)
+    step = max(1, len(x_reduced) // 25)
 
     plt.figure(figsize=(10, 6))
     plt.style.use(['science', 'no-latex'])
     plt.imshow(C_values_reduced, cmap='viridis', aspect='auto', origin='lower', extent=[-x_size, x_size, 0, z_size])
-    plt.quiver(X_reduced[::step, ::step], Z_reduced[::step, ::step], dx_reduced[::step, ::step], dz_reduced[::step, ::step], color='white')
+    plt.quiver(X_reduced[::step, ::step], Z_reduced[::step, ::step], dx_reduced[::step, ::step], dz_reduced[::step, ::step], color='white', scale=arrow_scale)
     plt.title(f'$C(x,z)$ steady state ; $\\Omega/D={omega:.1f} ; r/D={r:.1f} ; L_x={L_x:.1f} ; L_z={L_z:.1f}$', fontsize=16, weight='bold')
     plt.colorbar()
     plt.xlabel('$x$', fontsize=16, weight='bold')

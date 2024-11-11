@@ -10,7 +10,7 @@ N_max = 10 ** 5
 omega = 0.2  # Fixed omega value
 
 # Create directory for saving figures
-figs_dir = 'figs_analytic'
+figs_dir = '../figs_analytic'
 os.makedirs(figs_dir, exist_ok=True)
 
 
