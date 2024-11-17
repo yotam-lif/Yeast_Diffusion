@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, mathtools, mhchem, stackrel, stmaryrd}
+
+\title{\textbf{Yeast Signaling}}
+\date{}
+
+\begin{document}
+\maketitle
+
+We begin with the equation:
+\begin{align}
+\frac{\partial C(x,z)}{\partial t} &= D \nabla^{2} C(x,z) + r \Theta(-x) \delta(z) - \Omega \delta(z) C(x,z)
+\end{align}
+
+Look for steady-state solutions:
+\begin{align}
+D \nabla^{2} C(x,z) + r \Theta(-x) \delta(z) - \Omega \delta(z) C(x,z) &= 0
+\end{align}
+
+Define new coefficients:
+\begin{align}
+\partial_{xx} C(x,z) + \partial_{zz} C(x,z) + \tilde{r} \Theta(-x) \delta(z) - \tilde{\Omega} \delta(z) C(x,z) &= 0
+\end{align}
+
+And drop the tildes from here forward.
+
+What happens if we integrate over an $\epsilon$ region around $z=0$:
+\begin{align}
+\partial_{z} C(x,z)|_{z=+\epsilon} - \partial_{z} C(x,z)|_{z=-\epsilon} &= -r \Theta(-x) + \Omega C(x,z=0)
+\end{align}
+
+This is the virtual flux of $\alpha$ factors through the $z$-plane, and we can turn it into a Robin BC:
+\begin{align*}
+\partial_{z} C(x,z)|_{z=0} &= -r \Theta(-x) + \Omega C(x,z=0)
+\end{align*}
+
+And just solve the Laplace equation on the positive half volume.
+
+Assume structure of $C(x,z)$:
+\begin{align}
+C(x,z) &= X(x) Z(z) + \frac{r}{2 \Omega}
+\end{align}
+
+We assume this structure due to the fact that one can deduce the following symmetry from the equation / BC:
+\begin{equation}
+C(-x,z) + C(x,z) = \frac{r}{\Omega}
+\end{equation}
+
+Thus:
+\begin{equation}
+C(0,z) = \frac{r}{2 \Omega}
+\end{equation}
+
+And also:
+\begin{equation}
+C(x,z) = X(x) Z(z) \Rightarrow C(0,z) = X(0) Z(z)
+\end{equation}
+
+Where $X(0)$ is a constant, and there is no way to satisfy the previous condition for $C(0,z)$ besides constant $Z(z)$, which cannot be a solution.
+
+The symmetry can be seen as follows - if $C(x,z)$ is a solution, for $x>0$ we have:
+\[
+\partial_{z} C(x,z)|_{z=0} = \Omega C(x,z=0)
+\]
+
+And:
+\[
+\partial_{z} C(-x,z)|_{z=0} = -r + \Omega C(-x,z=0)
+\]
+
+Now take the function $\frac{r}{\Omega} - C(x,z)$; it satisfies the Robin BC for $x<0$ as well:
+\[
+-\partial_{z} C(x,z)|_{z=0} = \Omega \left(\frac{r}{\Omega} - C(x,z)\right) = r - \Omega C(x,z=0)
+\]
+
+It also satisfies the rest of the reflecting BC and is a solution of the Laplace equation as well, thus $\frac{r}{\Omega} - C(x,z)$ is also a solution on $x<0$.
+
+From uniqueness, we can deduce $\frac{r}{\Omega} - C(x,z) = C(-x,z)$ and we get our symmetry.
+
+\textbf{Boundary Conditions:}
+\begin{align}
+\partial_{z} C(x,z)|_{z=L_{z}} &= 0 \\
+\partial_{z} C(x,z)|_{z=0} &= -r \Theta(-x) + \Omega C(x,z=0) \\
+C(x,z)|_{x=0} &= \frac{r}{2 \Omega} \\
+\partial_{x} C(x,z)|_{x=-L_{x}} &= 0
+\end{align}
+
+We solve for the $x<0$ region, which dictates the $x>0$ region.
+
+\textbf{Laplace Equation Solution:}
+\begin{align}
+\nabla^{2} C(x,z) &= 0 \\
+\frac{1}{X(x)} \partial_{xx} X(x) &= -k^{2} = -\frac{1}{Z(z)} \partial_{zz} Z(z)
+\end{align}
+
+\begin{align}
+X_{n}(x) &= A_{n} e^{+ik_{n} x} + B_{n} e^{-ik_{n} x} \\
+Z_{n}(z) &= C_{n} e^{+k_{n} z} + D_{n} e^{-k_{n} z}
+\end{align}
+
+**Full solution and further details continue here,** following the pattern above.
+
+\end{document}
