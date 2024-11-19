@@ -1,16 +1,16 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
 \use_default_options true
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -18,7 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -61,7 +63,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -77,11 +81,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -173,7 +182,8 @@ This is the virtual flux of
 \begin_inset Formula $z$
 \end_inset
 
--plane, and we can turn it into a Robin BC:
+-plane,
+ and we can turn it into a Robin BC:
 \end_layout
 
 \begin_layout Standard
@@ -212,8 +222,7 @@ C(x,z) & =X(x)Z(z)+\frac{r}{2\Omega}
 \end_layout
 
 \begin_layout Standard
-We assume this structure due to the fact that one can deduce the following
- symmetry from the equation / BC:
+We assume this structure due to the fact that one can deduce the following symmetry from the equation / BC:
 \end_layout
 
 \begin_layout Standard
@@ -258,8 +267,8 @@ Where
 \begin_inset Formula $X(0)$
 \end_inset
 
- is a constant, and there is no way to satisfy the previous condition for
- 
+ is a constant,
+ and there is no way to satisfy the previous condition for 
 \begin_inset Formula $C(0,z)$
 \end_inset
 
@@ -267,7 +276,8 @@ Where
 \begin_inset Formula $Z(z)$
 \end_inset
 
-, which cannot be a solution.
+,
+ which cannot be a solution.
 \end_layout
 
 \begin_layout Standard
@@ -275,7 +285,8 @@ The symmetry can be seen as follows - if
 \begin_inset Formula $C(x,z)$
 \end_inset
 
- is a solution, for 
+ is a solution,
+ for 
 \begin_inset Formula $x>0$
 \end_inset
 
@@ -310,7 +321,8 @@ Now take the function
 \begin_inset Formula $\frac{r}{\Omega}-C(x,z)$
 \end_inset
 
-, it satisfies the Robin BC for 
+,
+ it satisfies the Robin BC for 
 \begin_inset Formula $x<0$
 \end_inset
 
@@ -329,8 +341,8 @@ Now take the function
 \end_layout
 
 \begin_layout Standard
-It also satisfies the rest of the reflecting BC and is a solution of the
- Laplace equation as well, thus 
+It also satisfies the rest of the reflecting BC and is a solution of the Laplace equation as well,
+ thus 
 \begin_inset Formula $\frac{r}{\Omega}-C(x,z)$
 \end_inset
 
@@ -350,7 +362,8 @@ From uniqueness we can deduce
 \end_layout
 
 \begin_layout Standard
-So, we have BC:
+So,
+ we have BC:
 \end_layout
 
 \begin_layout Standard
@@ -402,7 +415,8 @@ And we solve for the
 \begin_inset Formula $x<0$
 \end_inset
 
- region, which dictates the 
+ region,
+ which dictates the 
 \begin_inset Formula $x>0$
 \end_inset
 
@@ -410,18 +424,18 @@ And we solve for the
 \end_layout
 
 \begin_layout Standard
-This is the simplest structure that has the potential to adhere to the constrain
-ts, where 
+This is the simplest structure that has the potential to adhere to the constraints,
+ where 
 \begin_inset Formula $C(x,z)$
 \end_inset
 
- is still seperable in the Poisson equation.
+ is still separable in the Poisson equation.
  
 \end_layout
 
 \begin_layout Standard
-Before the analytical solution, we perform a coarse-grained simulation of
- the above to see how results should look like (with finite 
+Before the analytical solution,
+ we perform a coarse-grained simulation of the above to see how results should look like (with finite 
 \begin_inset Formula $L_{x},L_{z}$
 \end_inset
 
@@ -436,10 +450,12 @@ reference "fig: Figure 1"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
-, and plot 
+,
+ and plot 
 \begin_inset Formula $C(x,z=0)$
 \end_inset
 
@@ -453,6 +469,8 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -481,16 +499,19 @@ Heatmap of the
 \begin_inset Formula $10^{6}$
 \end_inset
 
- steps); Arrows represent the flow field at every point; Parameter values
- are 
+ steps);
+ Arrows represent the flow field at every point;
+ Parameter values are 
 \begin_inset Formula $r_{0}=0.1$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $L_{x}=20$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $L_{z}=30$
 \end_inset
 
@@ -516,6 +537,8 @@ name "fig: Figure 1"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -619,7 +642,7 @@ BC 3:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-C(x,z)|_{x=0} & \propto A_{n}+B_{n}+\frac{r}{2\Omega}=\frac{r}{2\Omega}
+C(x,z)|_{x=0} & =A_{n}+B_{n}+\frac{r}{2\Omega}=\frac{r}{2\Omega}
 \end{align}
 
 \end_inset
@@ -667,7 +690,7 @@ BC 4:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-k_{n} & =\frac{\pi}{2L_{x}}(2n+1)\Rightarrow k_{n_{odd}}=\frac{\pi}{2L_{x}}n_{odd}
+k_{n} & =\frac{\pi}{2L_{x}}(2n+1)
 \end{align}
 
 \end_inset
@@ -708,7 +731,7 @@ D_{n} & =C_{n}e^{+2k_{n}L_{z}}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
- & \Rightarrow Z_{n}(z)\propto(e^{+k_{n}z}+e^{+2k_{n}L_{z}}e^{-k_{n}z})\propto cosh(k_{n}(z-L_{z}))
+ & \Rightarrow Z_{n}(z)=(e^{+k_{n}z}+e^{+2k_{n}L_{z}}e^{-k_{n}z})=C_{n}cosh(k_{n}(z-L_{z}))
 \end{align}
 
 \end_inset
@@ -727,7 +750,7 @@ So we now have for
 \begin_layout Standard
 \begin_inset Formula 
 \[
-C(x,z)=\sum_{n_{odd}}A_{n}sin(k_{n}x)cosh(k_{n}(z-L_{z}))
+C(x,z)=\frac{r}{2\Omega}+\sum_{n,m}A_{n,m}sin(k_{n}x)cosh(k_{m}(z-L_{z}))
 \]
 
 \end_inset
@@ -757,7 +780,7 @@ And our final BC is (on
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\sum-k_{n}A_{n}cos(k_{n}x)sinh(k_{n}L_{z}) & =+\tilde{\Omega}\sum A_{n}sin(k_{n}x)cosh(k_{n}L_{z})-\frac{r}{2}
+\sum-k_{m}A_{n,m}sin(k_{n}x)sinh(k_{m}L_{z}) & =+\tilde{\Omega}\sum A_{n,m}sin(k_{n}x)cosh(k_{m}L_{z})-\frac{r}{2}
 \end{align}
 
 \end_inset
@@ -768,7 +791,7 @@ And our final BC is (on
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\sum_{n_{odd}}A_{n}sin(k_{n}x)[\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z})] & =\frac{r}{2}
+\sum_{n}A_{n,m}sin(k_{n}x)[\Omega cosh(k_{m}L_{z})+k_{m}sinh(k_{m}L_{z})] & =\frac{r}{2}
 \end{align}
 
 \end_inset
@@ -779,7 +802,7 @@ And our final BC is (on
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-A_{n}^{'} & :=A_{n}\frac{\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z})}{r/2}
+A'_{n,m} & :=A_{n,m}\frac{\Omega cosh(k_{m}L_{z})+k_{m}sinh(k_{m}L_{z})}{r/2}
 \end{align}
 
 \end_inset
@@ -790,7 +813,7 @@ A_{n}^{'} & :=A_{n}\frac{\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z})}{r/2}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\sum_{n_{odd}}A_{n}^{'}sin(k_{n}x) & =1
+\sum_{n}A_{n,m}^{'}sin(k_{n}x) & =1
 \end{align}
 
 \end_inset
@@ -800,7 +823,7 @@ A_{n}^{'} & :=A_{n}\frac{\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z})}{r/2}
 
 \begin_layout Standard
 Multiply by 
-\begin_inset Formula $sin(k_{m}x)$
+\begin_inset Formula $sin(k_{l}x)$
 \end_inset
 
  and integrate on 
@@ -813,7 +836,7 @@ Multiply by
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-A_{m}^{'}\frac{L_{x}}{2} & =\int_{-L_{x}}^{0}sin(k_{m}x)dx=-\frac{1}{k_{m}}
+A_{l,m}^{'}\frac{L_{x}}{2} & =\int_{-L_{x}}^{0}sin(k_{l}x)dx=-\frac{1}{k_{l}}
 \end{align}
 
 \end_inset
@@ -823,7 +846,7 @@ A_{m}^{'}\frac{L_{x}}{2} & =\int_{-L_{x}}^{0}sin(k_{m}x)dx=-\frac{1}{k_{m}}
 
 \begin_layout Standard
 Where we get that for 
-\begin_inset Formula $m_{odd}\neq n_{odd}$
+\begin_inset Formula $l_{odd}\neq n_{odd}$
 \end_inset
 
  these sines are orthogonal on 
@@ -836,7 +859,7 @@ Where we get that for
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
--\frac{2}{k_{n}L_{x}}=A_{n}^{'}=A_{n}\frac{\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z})}{r/2}
+-\frac{2}{k_{l}L_{x}}=A_{l,m}^{'}=A_{l,m}\frac{\Omega cosh(k_{m}L_{z})+k_{m}sinh(k_{m}L_{z})}{r/2}
 \end{equation}
 
 \end_inset
@@ -847,7 +870,7 @@ Where we get that for
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\Rightarrow A_{n}=-\frac{r}{L_{x}}\frac{1}{k_{n}(\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z}))}
+\Rightarrow A_{l,m}=-\frac{r}{L_{x}}\frac{1}{k_{l}(\Omega cosh(k_{m}L_{z})+k_{m}sinh(k_{m}L_{z}))}
 \end{equation}
 
 \end_inset
@@ -858,7 +881,7 @@ Where we get that for
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C_{<}(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{sin(k_{n}x)cosh(k_{n}(z-L_{z}))}{k_{n}(\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z}))}
+C_{<}(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n,m}\frac{sin(k_{n}x)cosh(k_{m}(z-L_{z}))}{k_{n}(\Omega cosh(k_{m}L_{z})+k_{m}sinh(k_{m}L_{z}))}
 \end{equation}
 
 \end_inset
@@ -867,18 +890,19 @@ C_{<}(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{sin(k_{n}x)cosh(
 \end_layout
 
 \begin_layout Standard
-And this actually agrees with the symmetry we found, so this is the solution
- on all 
+And this actually agrees with the symmetry we found,
+ so this is the solution on all 
 \begin_inset Formula $x$
 \end_inset
 
-: 
+:
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{sin(k_{n}x)cosh(k_{n}(z-L_{z}))}{k_{n}(\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z}))}
+C(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n,m}\frac{sin(k_{n}x)cosh(k_{m}(z-L_{z}))}{k_{n}(\Omega cosh(k_{m}L_{z})+k_{m}sinh(k_{m}L_{z}))}
 \end{equation}
 
 \end_inset
@@ -887,13 +911,14 @@ C(x,z)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{sin(k_{n}x)cosh(k_{n
 \end_layout
 
 \begin_layout Standard
-Grapic representation of this analytical result can be found in 
+Graphic representation of this analytical result can be found in 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "fig: 3"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -902,6 +927,8 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -930,8 +957,9 @@ Plotted is the analytical result derived for
 \begin_inset Formula $L_{x},L_{z}$
 \end_inset
 
- ; Arrows represent the flow field at every point; Parameter values are
- 
+ ;
+ Arrows represent the flow field at every point;
+ Parameter values are 
 \begin_inset Formula $L_{x}=20,L_{z}=40,\Omega=0.6,r=0.1,N_{max}=100$
 \end_inset
 
@@ -951,27 +979,25 @@ name "fig: 3"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Now, we are most interested at what happens on 
+Now,
+ we are most interested at what happens on 
 \begin_inset Formula $z=0$
 \end_inset
 
- plane, so:
+ plane,
+ so:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-C(x,0) & =\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega cosh(k_{n}L_{z})+k_{n}sinh(k_{n}L_{z}))}sin(k_{n}x)cosh(k_{n}L_{z})
+C(x,0)=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n,m}\frac{sin(k_{n}x)cosh(k_{m}L_{z})}{k_{n}(\Omega cosh(k_{m}L_{z})+k_{m}sinh(k_{m}L_{z}))}
 \end{align}
 
 \end_inset
@@ -982,7 +1008,7 @@ C(x,0) & =\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega c
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-=\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega+k_{n}tanh(k_{n}L_{z}))}sin(k_{n}x)
+\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n,m}\frac{sin(k_{n}x)}{k_{n}(\Omega+k_{m}tanh(k_{m}L_{z}))}
 \end{align}
 
 \end_inset
@@ -1001,7 +1027,7 @@ And at
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\approx\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega+k_{n})}sin(k_{n}x)
+\approx\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n,m}\frac{sin(k_{n}x)}{k_{n}(\Omega+k_{m})}
 \end{align}
 
 \end_inset
@@ -1024,7 +1050,7 @@ We can further simplify this solution:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n_{odd}}\frac{1}{k_{n}(\Omega+k_{n})}sin(k_{n}x)=
+\frac{r}{2\Omega}-\frac{r}{L_{x}}\sum_{n}\frac{sin(k_{n}x)}{k_{n}}
 \end{equation}
 
 \end_inset
@@ -1035,18 +1061,7 @@ We can further simplify this solution:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-=\frac{r}{2\Omega}-\frac{r}{\Omega L_{x}}\sum_{n_{odd}}(\frac{1}{k_{n}}-\frac{1}{\Omega+k_{n}})sin(k_{n}x)
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-=\frac{r}{2\Omega}-\frac{r}{2\Omega}\sum_{n_{odd}}4\frac{sin(k_{n}x)}{\pi n}+\frac{r}{\Omega L_{x}}\sum_{n_{odd}}\frac{sin(k_{n}x)}{k_{n}+\Omega}
+=\frac{r}{2\Omega}-\frac{r}{2}\sum_{n}4\frac{sin(k_{n}x)}{\pi(2n+1)}\sum_{m}\frac{1}{\Omega+k_{m}}
 \end{equation}
 
 \end_inset
@@ -1056,16 +1071,17 @@ We can further simplify this solution:
 
 \begin_layout Standard
 We know 
-\begin_inset Formula $\sum_{n_{odd}}4\frac{sin(k_{n}x)}{\pi n}$
+\begin_inset Formula $\sum_{n}4\frac{sin(k_{n}x)}{\pi(2n+1)}$
 \end_inset
 
- is the fourier transform of a sin square wave, so:
+ is the Fourier transform of a sin square wave,
+ so:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-=\frac{r}{\Omega}(\Theta(-x)+\frac{1}{L_{x}}\sum_{n_{odd}}\frac{sin(k_{n}x)}{k_{n}+\Omega})
+=\frac{r}{2\Omega}-\frac{r}{2}\Theta(-x)\sum_{m}\frac{1}{\Omega+k_{m}}
 \end{equation}
 
 \end_inset
@@ -1081,6 +1097,7 @@ reference "fig:Analytical-results-vary-Omega"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -1089,6 +1106,8 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1118,7 +1137,8 @@ Analytical results for
 \begin_inset Formula $\Omega$
 \end_inset
 
-; Parameter values are 
+;
+ Parameter values are 
 \begin_inset Formula $L_{x}=20,r=0.1,N_{max}=10^{5}$
 \end_inset
 
@@ -1148,6 +1168,8 @@ name "fig:Analytical-results-vary-Omega"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1180,11 +1202,13 @@ Analytical results for
 \begin_inset Formula $L_{x}$
 \end_inset
 
-; Parameter values are 
+;
+ Parameter values are 
 \begin_inset Formula $\Omega=0.2,r=0.1,N_{max}=10^{5}$
 \end_inset
 
-; Can be seen length scale 
+;
+ Can be seen length scale 
 \begin_inset Formula $1/\Omega$
 \end_inset
 
@@ -1288,7 +1312,8 @@ With
 \begin_inset Formula $Si(\omega)=\int_{0}^{\omega}\frac{sin(y)}{y}dy$
 \end_inset
 
- being the cosine integral and sine integral, respectively.
+ being the cosine integral and sine integral,
+ respectively.
 \end_layout
 
 \begin_layout Standard
@@ -1312,7 +1337,8 @@ Observe we have only
 \begin_inset Formula $D/\Omega:=L_{D}$
 \end_inset
 
-; Let us explore the 
+;
+ Let us explore the 
 \begin_inset Formula $2$
 \end_inset
 
@@ -1385,7 +1411,8 @@ And this is the approximate behaviour for
 \begin_inset Formula $x\gg L_{D}$
 \end_inset
 
-, which is different then the exponential asymptotic behaviour of the 
+,
+ which is different then the exponential asymptotic behaviour of the 
 \begin_inset Formula $1D$
 \end_inset
 
@@ -1400,6 +1427,7 @@ reference "fig: linear-asymptotic"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -1408,6 +1436,8 @@ noprefix "false"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -1461,7 +1491,8 @@ name "fig: linear-asymptotic"
 \end_inset
 
 .
- Thus, plotting 
+ Thus,
+ plotting 
 \begin_inset Formula $log(-C(x,z=0)/\frac{r}{\Omega})+log(\pi\Omega)$
 \end_inset
 
@@ -1481,7 +1512,8 @@ name "fig: linear-asymptotic"
 \begin_inset Formula $45$
 \end_inset
 
- degree line, as can be seen.
+ degree line,
+ as can be seen.
 \end_layout
 
 \end_inset
@@ -1519,7 +1551,8 @@ Where
 \begin_inset Formula $x>0$
 \end_inset
 
- for brevity, we get:
+ for brevity,
+ we get:
 \end_layout
 
 \begin_layout Standard
@@ -1534,7 +1567,8 @@ C(x,0)\approx\frac{r}{\Omega\pi}\times\left(sign(x)[\frac{\pi}{2}-\frac{|x|}{L_{
 \end_layout
 
 \begin_layout Standard
-Therefor, for 
+Therefor,
+ for 
 \begin_inset Formula $0<x\ll L_{D}$
 \end_inset
 
@@ -1557,8 +1591,8 @@ Adding Denaturation
 \end_layout
 
 \begin_layout Standard
-Adding to the complexity of the model, we would like to see how the solution
- changes with spatial uniform degradation.
+Adding to the complexity of the model,
+ we would like to see how the solution changes with spatial uniform degradation.
  In a 
 \begin_inset Formula $1D$
 \end_inset
@@ -1568,8 +1602,9 @@ Adding to the complexity of the model, we would like to see how the solution
 \begin_inset Formula $2D$
 \end_inset
 
- however this is not the case, and the equation to sove changes from the
- Laplace equation to the Helmholtz equation, with the same BCs:
+ however this is not the case,
+ and the equation to sove changes from the Laplace equation to the Helmholtz equation,
+ with the same BCs:
 \end_layout
 
 \begin_layout Standard

@@ -8,13 +8,13 @@ N_max = 100
 omega = 1.0  # Fixed omega value
 L_x = 20  # Define L_x for the x axis
 L_z = 40  # Define L_z for the z axis
-x_size = 10
-z_size = 10
+x_size = L_x
+z_size = L_z
 
 # Create directory for saving figures
-figs_dir = '../figs_analytic'
+figs_dir = '../figs'
 os.makedirs(figs_dir, exist_ok=True)
-fig_path = os.path.join(figs_dir, f'reflecting_bc.png')
+fig_path = os.path.join(figs_dir, f'analytic_reflecting_bc.png')
 
 # Main loop for a single L_x and L_z value
 num_x = int(L_x / resolution_density)
