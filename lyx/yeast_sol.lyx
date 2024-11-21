@@ -1295,7 +1295,7 @@ y=k_{n}=\frac{\pi n}{2L_{x}};dy=\frac{\pi}{2L_{x}}dn;dn=2
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-=\frac{cos(\frac{\Omega}{D}x)}{\pi}sign(x)[\frac{\pi}{2}-Si(\frac{\Omega}{D}|x|)]+\frac{sin(\frac{\Omega}{D}x)}{\pi}Ci(x\frac{\Omega}{D})
+=\frac{cos(\frac{\Omega}{D}x)}{\pi}sign(x)[\frac{\pi}{2}-Si(\frac{\Omega}{D}|x|)]+\frac{sin(\frac{\Omega}{D}x)}{\pi}Ci(|x|\frac{\Omega}{D})
 \end{equation}
 
 \end_inset
